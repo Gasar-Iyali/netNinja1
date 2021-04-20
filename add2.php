@@ -1,7 +1,7 @@
 <?php
 
-$title = $email = $ingredients = '';
-   $errors = array('email'=>'', 'title'=>'', 'ingredients'=>'');
+$errors = array('email'=>'', 'title'=>'', 'ingredients'=>'');
+
   if(isset($_POST['submit'])){
 
  // check email
@@ -25,18 +25,13 @@ $title = $email = $ingredients = '';
 
    // check ingredients
     if(empty($_POST['ingredients'])){
-      $errors['ingredients'] = 'At least 2 ingredients are required, <br />';
+        $errors['ingredients'] = 'At least 2 ingredients are required, <br />';
     } else {
       $ingredients = $_POST['ingredients'];
       if(!preg_match('/^([a-zA-Z\s]+)(,\s*[a-zA-Z\s]*)*$/', $ingredients))
       $errors['ingredients'] = 'Ingredients must be a comma separated list.';
     }
-    if (array_filter($errors)) {
-      // echo "there are errors in the form";
-    } else {
-      // echo "form is valid";
-      header('Location: index.php');
-    }
+
     }// end of the POST check
  ?>
 
@@ -47,22 +42,16 @@ $title = $email = $ingredients = '';
 
     <section class="container grey-text">
       <h4 class="center">Add a Pizza</h4>
-  <form class="amber lighten-4" action="add.php" method="POST">
-    <label for="">Your Email: </label>
-    <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
-    <div class="red-text">
-      <?php echo $errors['email']; ?>
-    </div>
-    <label for="">Pizza Title: </label>
-    <input type="text" name="title" value="<?php echo htmlspecialchars($title) ?>">
-    <div class="red-text">
-      <?php echo $errors['title']; ?>
-    </div>
-    <label for="">Pizza Ingredients(comma separated): </label>
-    <input type="text" name="ingredients" value="<?php echo htmlspecialchars($ingredients) ?>">
-    <div class="red-text">
-      <?php echo $errors['ingredients']; ?>
-    </div>
+  <form class="amber lighten-4" action="add2.php" method="POST">
+    <label>Your Email: </label>
+    <input type="text" name="email">
+    <div class="red-text"><?php echo $errors['email']; ?></div>
+    <label>Pizza Title: </label>
+    <input type="text" name="title">
+    <div class="red-text"><?php echo $errors['title']; ?></div>
+    <label>Pizza Ingredients(comma separated): </label>
+    <input type="text" name="ingredients">
+    <div class="red-text"><?php echo $errors['ingredients']; ?></div>
     <div class="center">
       <input type="submit" name="submit" class="btn brand z-depth-0" value="Submit">
 
