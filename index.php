@@ -22,8 +22,12 @@ mysqli_free_result($result);
 
 // close the connection
 mysqli_close($conn);
-
 // print_r($pizzas);
+
+// test the explode function
+
+// print_r(explode(',', $pizzas[0]['ingredients']));
+
 
  ?>
   <!DOCTYPE html>
@@ -41,7 +45,11 @@ mysqli_close($conn);
               <div class="card z-depth-0">
                 <div class="card-content center">
                   <h6> <?php echo htmlspecialchars($pizza['title']); ?> </h6>
-                  <div class=""><?php echo htmlspecialchars($pizza['ingredients']); ?>
+                  <ul>
+                    <?php foreach (explode(',', $pizza['ingredients']) as $ing){ ?>
+                      <li><?php echo htmlspecialchars($ing); ?></li>
+                    <?php } ?>
+                  </ul>
                   </div>
                   <div class="card-action right-align">
                     <a href="#" class="brand-text">more info</a>
