@@ -5,7 +5,7 @@ $conn = mysqli_connect('localhost', 'zack02', '$1234.Q5p6M7', 'netninja1');
 
 // check the connection
 if(!$conn){
-  echo 'Connection error: ' . mysqli_connect_error();
+  echo 'Connection error: '. mysqli_connect_error();
 }
 
 // write the query to get all the data
@@ -23,9 +23,7 @@ mysqli_free_result($result);
 // close the connection
 mysqli_close($conn);
 // print_r($pizzas);
-
 // test the explode function
-
 // print_r(explode(',', $pizzas[0]['ingredients']));
 
 
@@ -34,19 +32,20 @@ mysqli_close($conn);
   <html lang="en">
 
     <?php include('templates/header.php'); ?>
+
     <h4 class="center grey-text">Awesome Pizzas</h4>
 
     <div class="container">
       <div class="row">
 
-          <?php foreach ($pizzas as $pizza){ ?>
+          <?php foreach($pizzas as $pizza){ ?>
 
             <div class="col s6 md3">
               <div class="card z-depth-0">
                 <div class="card-content center">
-                  <h6> <?php echo htmlspecialchars($pizza['title']); ?> </h6>
-                  <ul>
-                    <?php foreach (explode(',', $pizza['ingredients']) as $ing){ ?>
+                  <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
+                  <ul class="">
+                    <?php foreach(explode(',', $pizza['ingredients']) as $ing){ ?>
                       <li><?php echo htmlspecialchars($ing); ?></li>
                     <?php } ?>
                   </ul>
@@ -56,11 +55,12 @@ mysqli_close($conn);
                   </div>
                 </div>
               </div>
-            </div>
-          <?php } ?>
-      </div>
 
+          <?php } ?>
+
+      </div>
     </div>
+
     <?php include('templates/footer.php'); ?>
 
   </html>
